@@ -1,0 +1,130 @@
+mysql> CREATE TABLE `employee` (
+    ->   `employeeId` int(11) NOT NULL,
+    ->   `employeeName` varchar(30) DEFAULT  NOT NULL,
+    ->   `employeeDesignation` varchar(30) DEFAULT  NOT NULL,
+    ->   `employeeLocation` varchar(20) DEFAULT  NOT NULL,
+    ->   `username` varchar(20) DEFAULT  NOT NULL,
+    ->   `password` varchar(20) DEFAULT  NOT NULL,
+    ->   PRIMARY KEY (`employeeId`)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOT NULL,
+  `employeeDesignation` varchar(30) DEFAULT  NOT NULL,
+  `employeeLoca' at line 3
+mysql> CREATE TABLE `employee` (
+    ->   `employeeId` int(11) NOT NULL,
+    ->   `employeeName` varchar(30)  NOT NULL,
+    ->   `employeeId` int(11) NOT NULL,
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 5
+mysql> CREATE TABLE `employee` (
+    ->   `employeeId` int(11) NOT NULL,
+    ->   `employeeId` int(11) NOT NULL,
+    ->
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> CREATE TABLE `employee` (
+    ->   `employeeId` int(11) NOT NULL,
+    ->   `employeeName` varchar(30)  NOT NULL,
+    ->   `employeeDesignation` varchar(30) NOT NULL,
+    ->   `employeeLocation` varchar(20) NOT NULL,
+    -> `username` varchar(20) NOT NULL,
+    -> `password` varchar(20)  NOT NULL,
+    -> PRIMARY KEY('EMPLOYEEID'));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''EMPLOYEEID'))' at line 8
+mysql> CREATE TABLE `employee` (
+    ->   `employeeId` int(11) NOT NULL,
+    ->   `employeeName` varchar(30)  NOT NULL,
+    ->   `employeeDesignation` varchar(30) NOT NULL,
+    ->   `employeeLocation` varchar(20) NOT NULL,
+    -> `username` varchar(20) NOT NULL,
+    -> `password` varchar(20)  NOT NULL,
+    -> primary key('employeeId'));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''employeeId'))' at line 8
+mysql> CREATE TABLE `employee` (
+    ->   `employeeId` int(11) NOT NULL,
+    ->   `employeeName` varchar(30)  NOT NULL,
+    ->   `employeeDesignation` varchar(30) NOT NULL,
+    ->   `employeeLocation` varchar(20) NOT NULL,
+    -> `username` varchar(20) NOT NULL,
+    -> `password` varchar(20)  NOT NULL,
+    -> PRIMARY KEY (`employeeId`));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> CREATE TABLE `category` (
+    ->   `categoryId` int(11) NOT NULL,
+    ->   `categoryName` varchar(20) DEFAULT  NOT NULL,
+    ->   PRIMARY KEY (`categoryId`)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOT NULL,
+  PRIMARY KEY (`categoryId`)
+)' at line 3
+mysql> CREATE TABLE `category` (
+    ->   `categoryId` int(11) NOT NULL,
+    ->   `categoryName` varchar(20)   NOT NULL,
+    ->   PRIMARY KEY (`categoryId`)
+    -> );
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> CREATE TABLE `questions` (
+    ->   `questionId` int(11) NOT NULL AUTO_INCREMENT,
+    ->   `questionDescription` varchar(2000) DEFAULT  NOT NULL,
+    ->   `date` date DEFAULT  NOT NULL,
+    ->   `employeeId` int(11) DEFAULT  NOT NULL,
+    ->   `categoryId` int(11) DEFAULT  NOT NULL,
+    ->   PRIMARY KEY (`questionId`));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOT NULL,
+  `date` date DEFAULT  NOT NULL,
+  `employeeId` int(11) DEFAULT  NOT N' at line 3
+mysql> CREATE TABLE `questions` (
+    ->   `questionId` int(11) NOT NULL AUTO_INCREMENT,
+    ->   `questionDescription` varchar(2000)   NOT NULL,
+    ->   `date` date   NOT NULL,
+    ->   `employeeId` int(11)   NOT NULL,
+    ->   `categoryId` int(11)   NOT NULL,
+    ->   PRIMARY KEY (`questionId`),
+    ->    FOREIGN KEY('employeeId') REFERENCES employee('employeeId'),
+    -> FOREIGN KEY('categoryId') REFERENCES category('categoryId'));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''employeeId') REFERENCES employee('employeeId'),
+FOREIGN KEY('categoryId') REFER' at line 8
+mysql> CREATE TABLE `questions` (
+    ->   `questionId` int(11) NOT NULL AUTO_INCREMENT,
+    ->   `questionDescription` varchar(2000)   NOT NULL,
+    ->   `date` date   NOT NULL,
+    ->   `employeeId` int(11)   NOT NULL,
+    ->   `categoryId` int(11)   NOT NULL,
+    ->   PRIMARY KEY (`questionId`),
+    ->    FOREIGN KEY(employeeId) REFERENCES employee(employeeId),
+    -> FOREIGN KEY (categoryId) ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9
+mysql> CREATE TABLE `questions` (
+    ->   `questionId` int(11) NOT NULL AUTO_INCREMENT,
+    ->   `questionDescription` varchar(2000)   NOT NULL,
+    ->   `date` date   NOT NULL,
+    ->   `employeeId` int(11)   NOT NULL,
+    ->   `categoryId` int(11)   NOT NULL,
+    ->   PRIMARY KEY (`questionId`),
+    ->    FOREIGN KEY(employeeId) REFERENCES employee(employeeId),
+    -> FOREIGN KEY(categoryId) REFERENCES category(categoryId));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> CREATE TABLE `answers` (
+    ->   `answerId` int(11) NOT NULL AUTO_INCREMENT,
+    ->   `answerDescription` varchar(2000) DEFAULT NOT NULL,
+    ->   `date` date DEFAULT NOT NULL,
+    ->   `employeeId` int(11) DEFAULT NOT NULL,
+    ->   `questionId` int(11) DEFAULT NOT NULL,
+    ->   PRIMARY KEY (`answerId`));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOT NULL,
+  `date` date DEFAULT NOT NULL,
+  `employeeId` int(11) DEFAULT NOT NUL' at line 3
+mysql> CREATE TABLE `answers` (
+    ->   `answerId` int(11) NOT NULL AUTO_INCREMENT,
+    ->   `answerDescription` varchar(2000)  NOT NULL,
+    ->   `date` date  NOT NULL,
+    ->   `employeeId` int(11)  NOT NULL,
+    ->   `questionId` int(11)  NOT NULL,
+    ->  PRIMARY KEY (`answerId`),
+    -> FOREIGN KEY(employeeId) REFERENCES employee(employeeId),
+    -> FOREIGN KEY(questionId) REFERENCES questions(questionId)
+    -> );
